@@ -19,8 +19,7 @@ public class StringCalculator
         }
         else
         {
-            var separators = new char[] { ',', '\n' };
-            numbers = input.Split(separators);
+            numbers = GetNumbersAsString(input);
         }
 
         var result = numbers
@@ -28,5 +27,15 @@ public class StringCalculator
             .Sum();
 
         return result;
+    }
+
+    private string[]? GetNumbersAsString(string input)
+    {
+        string[]? numbers;
+
+        var separators = new char[] { ',', '\n' };
+        numbers = input.Split(separators);
+
+        return numbers;
     }
 }
