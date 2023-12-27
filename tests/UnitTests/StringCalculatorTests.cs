@@ -6,14 +6,16 @@ namespace UnitTests;
 
 public class StringCalculatorTests
 {
+    private readonly StringCalculator _calculator;
+
+    public StringCalculatorTests() => 
+        _calculator = new StringCalculator();
+
     [Fact]
     public void Add_Returns0_GivenEmptyString()
     {
-        // arrange
-        var calculator = new StringCalculator();
-
         // act
-        var result = calculator.Add("");
+        var result = _calculator.Add("");
 
         // assert
         result.Should().Be(0);
@@ -26,11 +28,8 @@ public class StringCalculatorTests
     [InlineData("100", 100)]
     public void Add_ReturnsNumber_GivenNumber(string input, int output)
     {
-        // arrange
-        var calculator = new StringCalculator();
-
         // act
-        var result = calculator.Add(input);
+        var result = _calculator.Add(input);
 
         // assert
         result.Should().Be(output);
@@ -43,11 +42,8 @@ public class StringCalculatorTests
     [InlineData("100,100", 200)]
     public void Add_ReturnsSum_GivenNumbers(string input, int output)
     {
-        // arrange
-        var calculator = new StringCalculator();
-
         // act
-        var result = calculator.Add(input);
+        var result = _calculator.Add(input);
 
         // assert
         result.Should().Be(output);
