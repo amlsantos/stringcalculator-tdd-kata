@@ -80,6 +80,8 @@ public class StringCalculatorTests
     [Theory]
     [InlineData("//;\n1;2", 3)]
     [InlineData("//*\n1*2", 3)]
+    [InlineData("//*\n1*2*3", 6)]
+    [InlineData("//;\n1;2;3", 6)]
     public void Add_ReturnsSum_GivenCustomDelimeter(string input, int output)
     {
         // act

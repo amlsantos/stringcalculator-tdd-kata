@@ -9,13 +9,9 @@ public class StringCalculator
             return 0;
 
         string[]? numbers;
-        if (input.StartsWith("//"))
+        if (IsCustomSeparator(input))
         {
-            // custom separator
-            var customSeparator = input.Substring(2, 1);
-            input = input.Substring(4);
-
-            numbers = input.Split(customSeparator);
+            numbers = GetCustomSeparatedNumbersAsString(input);
         }
         else
         {
@@ -29,13 +25,24 @@ public class StringCalculator
         return result;
     }
 
+    private static bool IsCustomSeparator(string input)
+    {
+        return input.StartsWith("//");
+    }
+
+    private string[] GetCustomSeparatedNumbersAsString(string input)
+    {
+        var separator = input.Substring(2, 1);
+        var customInput = input.Substring(4);
+
+        return customInput.Split(separator);
+    }
+
     private string[]? GetNumbersAsString(string input)
     {
-        string[]? numbers;
-
         var separators = new char[] { ',', '\n' };
-        numbers = input.Split(separators);
 
-        return numbers;
+        return input
+            .Split(separators);
     }
 }
