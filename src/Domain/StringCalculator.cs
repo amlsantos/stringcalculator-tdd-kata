@@ -3,15 +3,21 @@ namespace Domain;
 
 public class StringCalculator
 {
-    public object Add(string numbers)
+    public int Add(string input)
     {
-        if (string.IsNullOrEmpty(numbers))
+        if (string.IsNullOrEmpty(input))
             return 0;
 
-        if (numbers.Contains("1"))
+        var numbers = input.Split(",");
+
+        if (numbers.Length == 1)
+            return int.Parse(numbers[0]);
+        
+
+        if (input.Contains("1"))
             return 1;
 
-        if (numbers.Contains("2"))
+        if (input.Contains("2"))
             return 2;
 
         return 0;
