@@ -35,4 +35,21 @@ public class StringCalculatorTests
         // assert
         result.Should().Be(output);
     }
+
+    [Theory]
+    [InlineData("1,1", 2)]
+    [InlineData("2,2", 4)]
+    [InlineData("10,10", 20)]
+    [InlineData("100,100", 200)]
+    public void Add_ReturnsSum_GivenNumbers(string input, int output)
+    {
+        // arrange
+        var calculator = new StringCalculator();
+
+        // act
+        var result = calculator.Add(input);
+
+        // assert
+        result.Should().Be(output);
+    }
 }

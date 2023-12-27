@@ -13,6 +13,9 @@ public class StringCalculator
         if (numbers.Length == 1)
             return int.Parse(numbers[0]);
 
+        if (numbers.Length == 2)
+            return int.Parse(numbers[0]) + int.Parse(numbers[1]);
+
         return 0;
     }
 }
