@@ -10,22 +10,29 @@ public class StringCalculator
 
         var formatedInput = GetNumbers(input);
         var numbers = formatedInput.Select(x => int.Parse(x)).ToList();
+        
         var negatives = numbers.FindAll(x => x < 0);
+        ShowError(negatives);
 
-        if (negatives.Any())
-        {
-            var numbersAsString = string.Join(',', negatives.Select(x => x.ToString()));
-            var exceptionMessage = $"Negatives not allowed: {numbersAsString}";
-
-            throw new InvalidOperationException(exceptionMessage);
-        }
-
-        var sum = numbers.Sum();
+        var sum = numbers
+            .Where(x => x < 1000)
+            .Sum();
 
         return sum;
-    }    
+    }
 
-    private string[]? GetNumbers(string input)
+    private static void ShowError(IList<int> negatives)
+    {
+        if (!negatives.Any())
+            return;
+
+        var numbersAsString = string.Join(',', negatives.Select(x => x.ToString()));
+        var exceptionMessage = $"Negatives not allowed: {numbersAsString}";
+
+        throw new InvalidOperationException(exceptionMessage);
+    }
+
+    private string[] GetNumbers(string input)
     {
         switch (IsCustomSeparator(input))
         {
@@ -49,7 +56,7 @@ public class StringCalculator
         return customInput.Split(separator);
     }
 
-    private string[]? GetNumbersAsString(string input)
+    private string[] GetNumbersAsString(string input)
     {
         var separators = new char[] { ',', '\n' };
 
