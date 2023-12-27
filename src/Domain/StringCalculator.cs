@@ -12,13 +12,6 @@ public class StringCalculator
 
         if (numbers.Length == 1)
             return int.Parse(numbers[0]);
-        
-
-        if (input.Contains("1"))
-            return 1;
-
-        if (input.Contains("2"))
-            return 2;
 
         return 0;
     }
