@@ -62,4 +62,16 @@ public class StringCalculatorTests
         // assert
         result.Should().Be(output);
     }
+
+    [Theory]
+    [InlineData("1\n2,3", 6)]
+    [InlineData("11\n22,33", 66)]
+    public void Add_ReturnsSum_GivenTHreeNumbersSepatatedWithCommaOrNewLIne(string input, int output)
+    {
+        // act
+        var result = _calculator.Add(input);
+
+        // assert
+        result.Should().Be(output);
+    }
 }
