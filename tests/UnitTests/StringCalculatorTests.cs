@@ -104,4 +104,18 @@ public class StringCalculatorTests
         result.Should().Throw<InvalidOperationException>()
             .WithMessage(expectedExceptionMessage);
     }
+
+    [Theory]
+    [InlineData("1,1,1000", 2)]
+    [InlineData("2,2000,2", 4)]
+    [InlineData("10,1000,10", 20)]
+    [InlineData("100,1000,100", 200)]
+    public void Add_ReturnsSumIgnoringOver1000_GivenNumbers(string input, int output)
+    {
+        // act
+        var result = _calculator.Add(input);
+
+        // assert
+        result.Should().Be(output);
+    }
 }
