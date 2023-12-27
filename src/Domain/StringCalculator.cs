@@ -14,10 +14,10 @@ public class StringCalculator
 
         if (negatives.Any())
         {
-            var formattedNegatives = string.Join(',', negatives.Select(x => x.ToString()));
-            var negativeNumber = numbers.First(x => x < 0);
-            
-            throw new InvalidOperationException($"Negatives not allowed: {formattedNegatives}");
+            var numbersAsString = string.Join(',', negatives.Select(x => x.ToString()));
+            var exceptionMessage = $"Negatives not allowed: {numbersAsString}";
+
+            throw new InvalidOperationException(exceptionMessage);
         }
 
         var sum = numbers.Sum();
