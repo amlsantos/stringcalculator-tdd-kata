@@ -68,7 +68,19 @@ public class StringCalculatorTests
     [InlineData("11\n22,33", 66)]
     [InlineData("11,22\n33", 66)]
     [InlineData("11,22,33", 66)]
-    public void Add_ReturnsSum_GivenTHreeNumbersSepatatedWithCommaOrNewLIne(string input, int output)
+    public void Add_ReturnsSum_GivenThreeNumbersSepatatedWithCommaOrNewLIne(string input, int output)
+    {
+        // act
+        var result = _calculator.Add(input);
+
+        // assert
+        result.Should().Be(output);
+    }
+
+    [Theory]
+    [InlineData("//;\n1;2", 3)]
+    [InlineData("//*\n1*2", 3)]
+    public void Add_ReturnsSum_GivenCustomDelimeter(string input, int output)
     {
         // act
         var result = _calculator.Add(input);

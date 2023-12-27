@@ -8,8 +8,20 @@ public class StringCalculator
         if (string.IsNullOrEmpty(input))
             return 0;
 
-        var separators = new char [] {',' , '\n'};
-        var numbers = input.Split(separators);
+        string[]? numbers;
+        if (input.StartsWith("//"))
+        {
+            // custom separator
+            var customSeparator = input.Substring(2, 1);
+            input = input.Substring(4);
+
+            numbers = input.Split(customSeparator);
+        }
+        else
+        {
+            var separators = new char[] { ',', '\n' };
+            numbers = input.Split(separators);
+        }
 
         var result = numbers
             .Select(x => int.Parse(x))
