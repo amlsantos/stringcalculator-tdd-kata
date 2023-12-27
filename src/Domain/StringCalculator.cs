@@ -9,13 +9,15 @@ public class StringCalculator
             return 0;
 
         var formatedInput = GetNumbers(input);
-        var numbers = formatedInput.Select(x => int.Parse(x));
-        
-        if (numbers.Any(x => x < 0))
+        var numbers = formatedInput.Select(x => int.Parse(x)).ToList();
+        var negatives = numbers.FindAll(x => x < 0);
+
+        if (negatives.Any())
         {
+            var formattedNegatives = string.Join(',', negatives.Select(x => x.ToString()));
             var negativeNumber = numbers.First(x => x < 0);
             
-            throw new InvalidOperationException($"Negatives not allowed: {negativeNumber}");
+            throw new InvalidOperationException($"Negatives not allowed: {formattedNegatives}");
         }
 
         var sum = numbers.Sum();
