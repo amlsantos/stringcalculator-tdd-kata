@@ -66,6 +66,8 @@ public class StringCalculatorTests
     [Theory]
     [InlineData("1\n2,3", 6)]
     [InlineData("11\n22,33", 66)]
+    [InlineData("11,22\n33", 66)]
+    [InlineData("11,22,33", 66)]
     public void Add_ReturnsSum_GivenTHreeNumbersSepatatedWithCommaOrNewLIne(string input, int output)
     {
         // act
