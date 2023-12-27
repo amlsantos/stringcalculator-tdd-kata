@@ -94,6 +94,7 @@ public class StringCalculatorTests
     [Theory]
     [InlineData("-1,2", "Negatives not allowed: -1")]
     [InlineData("1,-2", "Negatives not allowed: -2")]
+    [InlineData("1,-2,-3", "Negatives not allowed: -2,-3")]
     public void Add_ThrowsException_GivenNegativeInput(string input, string expectedExceptionMessage)
     {
         // act
