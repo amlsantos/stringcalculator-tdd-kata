@@ -106,11 +106,11 @@ public class StringCalculatorTests
     }
 
     [Theory]
-    [InlineData("1,1,1000", 2)]
+    [InlineData("1,1,1001", 2)]
     [InlineData("2,2000,2", 4)]
-    [InlineData("10,1000,10", 20)]
-    [InlineData("100,1000,100", 200)]
-    [InlineData("1000,100", 200)]
+    [InlineData("10,1001,10", 20)]
+    [InlineData("100,1000,100", 1200)]
+    [InlineData("1000,1", 1001)]
     public void Add_ReturnsSumIgnoringOver1000_GivenNumbers(string input, int output)
     {
         // act

@@ -15,7 +15,7 @@ public class StringCalculator
         ShowError(negatives);
 
         var sum = numbers
-            .Where(x => x < 1000)
+            .Where(x => x <= 1000)
             .Sum();
 
         return sum;
