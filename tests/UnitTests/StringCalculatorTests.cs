@@ -90,4 +90,17 @@ public class StringCalculatorTests
         // assert
         result.Should().Be(output);
     }
+
+    [Theory]
+    [InlineData("-1,2", "Negatives not allowed: -1")]
+    [InlineData("1,-2", "Negatives not allowed: -2")]
+    public void Add_ThrowsException_GivenNegativeInput(string input, string expectedExceptionMessage)
+    {
+        // act
+        var result = () => _calculator.Add(input);
+
+        // assert
+        result.Should().Throw<InvalidOperationException>()
+            .WithMessage(expectedExceptionMessage);
+    }
 }
