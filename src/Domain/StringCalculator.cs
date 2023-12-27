@@ -10,12 +10,10 @@ public class StringCalculator
 
         var numbers = input.Split(",");
 
-        if (numbers.Length == 1)
-            return int.Parse(numbers[0]);
+        var result = numbers
+            .Select(x => int.Parse(x))
+            .Sum();
 
-        if (numbers.Length == 2)
-            return int.Parse(numbers[0]) + int.Parse(numbers[1]);
-
-        return 0;
+        return result;
     }
 }
