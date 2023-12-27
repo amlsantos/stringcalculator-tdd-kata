@@ -8,24 +8,26 @@ public class StringCalculator
         if (string.IsNullOrEmpty(input))
             return 0;
 
-        string[]? numbers;
-        if (IsCustomSeparator(input))
-        {
-            numbers = GetCustomSeparatedNumbersAsString(input);
-        }
-        else
-        {
-            numbers = GetNumbersAsString(input);
-        }
-
+        var numbers = GetNumbers(input);
         var result = numbers
             .Select(x => int.Parse(x))
             .Sum();
 
         return result;
+    }    
+
+    private string[]? GetNumbers(string input)
+    {
+        switch (IsCustomSeparator(input))
+        {
+            case true:
+                return GetCustomSeparatedNumbersAsString(input);
+            default:
+                return GetNumbersAsString(input);
+        }
     }
 
-    private static bool IsCustomSeparator(string input)
+    private bool IsCustomSeparator(string input)
     {
         return input.StartsWith("//");
     }
