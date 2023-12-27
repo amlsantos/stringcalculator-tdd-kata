@@ -8,12 +8,19 @@ public class StringCalculator
         if (string.IsNullOrEmpty(input))
             return 0;
 
-        var numbers = GetNumbers(input);
-        var result = numbers
-            .Select(x => int.Parse(x))
-            .Sum();
+        var formatedInput = GetNumbers(input);
+        var numbers = formatedInput.Select(x => int.Parse(x));
+        
+        if (numbers.Any(x => x < 0))
+        {
+            var negativeNumber = numbers.First(x => x < 0);
+            
+            throw new InvalidOperationException($"Negatives not allowed: {negativeNumber}");
+        }
 
-        return result;
+        var sum = numbers.Sum();
+
+        return sum;
     }    
 
     private string[]? GetNumbers(string input)
