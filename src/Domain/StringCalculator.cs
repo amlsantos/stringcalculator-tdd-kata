@@ -43,17 +43,20 @@ public class StringCalculator
 
     private int Sum(string input, char[] separators)
     {
-        var numbers = input.Split(separators).Select(x => int.Parse(x));
-        var negatives = numbers.Where(x => x < 0).ToList();
+        var numbersOver1000 = input.Split(separators)
+        .Select(x => int.Parse(x))
+        .Where(x => x <=1000);
+
+        var negatives = numbersOver1000.Where(x => x < 0).ToList();
 
         if (negatives.Any())
         {
             var message = "Negatives not allowed: ";
             var negativesMessage = string.Join(',', negatives.Select(x => x.ToString()));
-            
+
             throw new InvalidOperationException(message + negativesMessage);
         }
 
-        return numbers.Sum();
+        return numbersOver1000.Sum();
     }
 }
