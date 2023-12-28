@@ -111,4 +111,17 @@ public class StringCalculatorTests
         result.Should().Throw<InvalidOperationException>()
         .WithMessage(expectedExceptionMessage);
     }
+
+    [Theory]
+    [InlineData("1000,1", 1001)]
+    [InlineData("1001,2", 2)]
+    public void Add_OnIntegersOver1000_IgnoresNumber(string input, int expectedOutput)
+    {
+        // arrange
+        // act
+        var result = _calculator.Add(input);
+
+        // assert
+        result.Should().Be(expectedOutput);
+    }
 }
