@@ -35,10 +35,9 @@ public class StringCalculator
 
     private int Sum(string numbers)
     {
-        char[] separators = [',', '\n'];
-        string input = numbers;
+        var separators = new char[] {',', '\n'};
 
-        return Sum(input, separators);
+        return Sum(numbers, separators);
     }
 
     private int Sum(string input, char[] separators)
