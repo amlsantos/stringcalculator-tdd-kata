@@ -82,4 +82,18 @@ public class StringCalculatorTests
         // assert
         result.Should().Be(expectedOutput);
     }
+
+    [Theory]
+    [InlineData("//;\n1;2", 3)]
+    [InlineData("//;\n1;2;3", 6)]
+    [InlineData("//*\n1*2*3*4", 10)]
+    public void Add_OnDifferentDelimeter_ReturnsCorrectSum(string input, int expectedOutput)
+    {
+        // arrange
+        // act
+        var result = _calculator.Add(input);
+
+        // assert
+        result.Should().Be(expectedOutput);
+    }
 }
