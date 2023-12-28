@@ -42,10 +42,25 @@ public class StringCalculatorTests
 
     
     [Theory]
-    [InlineData("1,1,2,2", 6)]
+    [InlineData("1,1", 2)]
     [InlineData("2,1", 3)]
     [InlineData("10,20", 30)]
     public void Add_On2Integers_ReturnsCorrectSum(string input, int expectedOutput)
+    {
+        // arrange
+
+        // act
+        var result = _calculator.Add(input);
+
+        // assert
+        result.Should().Be(expectedOutput);
+    }
+
+    [Theory]
+    [InlineData("1,1,1", 3)]
+    [InlineData("2,1,2", 5)]
+    [InlineData("10,20,30,40,50", 150)]
+    public void Add_OnMultipleIntegers_ReturnsCorrectSum(string input, int expectedOutput)
     {
         // arrange
 
