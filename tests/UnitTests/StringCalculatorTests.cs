@@ -40,7 +40,7 @@ public class StringCalculatorTests
         result.Should().Be(expectedOutput);
     }
 
-    
+
     [Theory]
     [InlineData("1,1", 2)]
     [InlineData("2,1", 3)]
@@ -48,7 +48,6 @@ public class StringCalculatorTests
     public void Add_On2Integers_ReturnsCorrectSum(string input, int expectedOutput)
     {
         // arrange
-
         // act
         var result = _calculator.Add(input);
 
@@ -63,7 +62,20 @@ public class StringCalculatorTests
     public void Add_OnMultipleIntegers_ReturnsCorrectSum(string input, int expectedOutput)
     {
         // arrange
+        // act
+        var result = _calculator.Add(input);
 
+        // assert
+        result.Should().Be(expectedOutput);
+    }
+
+    [Theory]
+    [InlineData("1\n1,1", 3)]
+    [InlineData("2\n1,2", 5)]
+    [InlineData("1\n2,3", 6)]
+    public void Add_OnNewLinesAndCommaWithMultipleIntegers_ReturnsCorrectSum(string input, int expectedOutput)
+    {
+        // arrange
         // act
         var result = _calculator.Add(input);
 
