@@ -11,7 +11,9 @@ public class StringCalculator
         if (numbers.Length == 1)
             return int.Parse(numbers);
 
-        var sum = numbers.Split(",")
+        var separators = new char[] {',', '\n'};
+
+        var sum = numbers.Split(separators)
             .Select(x => int.Parse(x))
             .Sum();
 
