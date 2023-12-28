@@ -39,4 +39,20 @@ public class StringCalculatorTests
         // assert
         result.Should().Be(expectedOutput);
     }
+
+    
+    [Theory]
+    [InlineData("1,1,2,2", 6)]
+    [InlineData("2,1", 3)]
+    [InlineData("10,20", 30)]
+    public void Add_OnMultipleNumbers_ReturnsCorrectSum(string input, int expectedOutput)
+    {
+        // arrange
+
+        // act
+        var result = _calculator.Add(input);
+
+        // assert
+        result.Should().Be(expectedOutput);
+    }
 }
