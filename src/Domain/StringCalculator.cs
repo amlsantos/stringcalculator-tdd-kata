@@ -41,10 +41,19 @@ public class StringCalculator
         return Sum(input, separators);
     }
 
-    private int Sum(string numbers, char[] separators)
+    private int Sum(string input, char[] separators)
     {
-        return numbers.Split(separators)
-        .Select(x => int.Parse(x))
-        .Sum();
+        var numbers = input.Split(separators).Select(x => int.Parse(x));
+        var negatives = numbers.Where(x => x < 0).ToList();
+
+        if (negatives.Any())
+        {
+            var message = "Negatives not allowed: ";
+            var negativesMessage = string.Join(',', negatives.Select(x => x.ToString()));
+            
+            throw new InvalidOperationException(message + negativesMessage);
+        }
+
+        return numbers.Sum();
     }
 }
