@@ -3,11 +3,11 @@ namespace Domain;
 
 public class StringCalculator
 {
-    public int Add(string number)
+    public int Add(string numbers)
     {
-        if (string.IsNullOrEmpty(number))
+        if (string.IsNullOrEmpty(numbers))
             return 0;
 
-        return 1;
+        return int.Parse(numbers);
     }
 }
