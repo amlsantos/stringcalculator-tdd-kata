@@ -8,29 +8,43 @@ public class StringCalculator
         if (string.IsNullOrEmpty(numbers))
             return 0;
 
-        if (numbers.Length == 1)
+        if (Is1Integer(numbers))
             return int.Parse(numbers);
 
         if (IsCustomDelimeter(numbers))
         {
-            var customDelimeter = numbers.Substring(2, 1);
-            var customInput = numbers.Substring(4);
-
-            return customInput.Split(customDelimeter)
-                .Select(x => int.Parse(x))
-                .Sum();
+            return SumWithCustomDelimeter(numbers);
         }
-
-        var separators = new char[] { ',', '\n' };
-        var sum = numbers.Split(separators)
-            .Select(x => int.Parse(x))
-            .Sum();
-
-        return sum;
+        else
+        {
+            return Sum(numbers);
+        }
     }
 
-    private bool IsCustomDelimeter(string numbers)
+    private bool Is1Integer(string numbers) => numbers.Length == 1;
+
+    private bool IsCustomDelimeter(string numbers) => numbers.StartsWith("//");
+
+    private int SumWithCustomDelimeter(string numbers)
     {
-        return numbers.StartsWith("//");
+        var separators = numbers.Substring(2, 1).ToCharArray();
+        var input = numbers.Substring(4);
+
+        return Sum(input, separators);
+    }
+
+    private int Sum(string numbers)
+    {
+        char[] separators = [',', '\n'];
+        string input = numbers;
+
+        return Sum(input, separators);
+    }
+
+    private int Sum(string numbers, char[] separators)
+    {
+        return numbers.Split(separators)
+        .Select(x => int.Parse(x))
+        .Sum();
     }
 }
