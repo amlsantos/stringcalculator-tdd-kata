@@ -30,7 +30,7 @@ public class StringCalculatorTests
     [InlineData("1", 1)]
     [InlineData("2", 2)]
     [InlineData("10", 10)]
-    public void Add_OnSingleNumber_ReturnsNumber(string input, int expectedOutput)
+    public void Add_On1Integer_ReturnsNumber(string input, int expectedOutput)
     {
         // arrange
         // act
@@ -45,7 +45,7 @@ public class StringCalculatorTests
     [InlineData("1,1,2,2", 6)]
     [InlineData("2,1", 3)]
     [InlineData("10,20", 30)]
-    public void Add_OnMultipleNumbers_ReturnsCorrectSum(string input, int expectedOutput)
+    public void Add_On2Integers_ReturnsCorrectSum(string input, int expectedOutput)
     {
         // arrange
 
