@@ -19,4 +19,18 @@ public class StringCalculatorTests
         // assert
         result.Should().Be(0);
     }
+
+    [Fact]
+    public void Add_OnSingleNumber_ReturnsNumber()
+    {
+        // arrange
+        var number = "1";
+        var calculator = new StringCalculator();
+
+        // act
+        var result = calculator.Add(number);
+
+        // assert
+        result.Should().Be(int.Parse(number));
+    }
 }
