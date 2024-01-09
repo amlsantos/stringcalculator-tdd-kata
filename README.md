@@ -1,3 +1,6 @@
+![build](https://github.com/amlsantos/stringcalculator-tdd-kata/actions/workflows/build.yml/badge.svg)
+![test](https://github.com/amlsantos/stringcalculator-tdd-kata/actions/workflows/test.yml/badge.svg)
+
 # String Calculator TDD Kata
 
 This repository contains a sample solution for the String Calculator TDD Kata, a coding exercise that focuses on Test-Driven Development (TDD) principles. 
